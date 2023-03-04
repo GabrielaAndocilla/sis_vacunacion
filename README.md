@@ -80,7 +80,7 @@ En esta carpeta se encontrarán los context que creamos, los cuales son informac
 - **Helpers:**
 Se ha creado esta carpeta para separar toda la lógica de negocio fuera de los componentes, y estos solo llamen las funciones que necesiten. Con esto logramos una arquitectura más limpia y menos repetición de código. No se utilizó una librería de manejo de estados para este caso debido al tamaño del proyecto. Separar esta sección de los componentes es la solución más adecuada para las necesidades del proyecto. Luego, migrar esto a un manejador de estados será más sencillo.
 
-Coverage del código
+### Coverage del código
 Se han generado pruebas unitarias y de integración. Se ha creado casi un archivo por cada componente o función que se encuentra en el código.
 
 - Jest: pruebas unitarias.
@@ -90,3 +90,32 @@ Para ejecutar los tests, puedes utilizar `npm run test`.
 Para ejecutar los tests con la tabla de cobertura, utiliza `npm run test -- --coverage .`
 
 <img src="public\images\coverage_table.png"/>
+#### Pre-commit hooks
+
+Los pre-commit hooks son scripts que se ejecutan automáticamente antes de cada confirmación de Git. Estos scripts se utilizan para realizar diversas comprobaciones y pruebas en el código, para garantizar que se cumplan ciertas normas de calidad y para prevenir la confirmación de código con errores.
+
+Para configurar y utilizar los pre-commit hooks en este proyecto, sigue estos pasos:
+
+1. Copia el archivo `pre-commit` de este repositorio en la carpeta `.git/hooks` de tu repositorio local.
+2. Asegúrate de que el archivo `pre-commit` tenga permisos de ejecución. Si no, ejecuta el comando `chmod +x .git/hooks/pre-commit`.
+
+A continuación se podra ver el pre-commit configurado
+
+```
+#!/bin/bash
+
+# Check for any files with debugging code
+if git diff --cached | grep -E '^(<<<<<<<|>>>>>>>)' >/dev/null; then
+    echo "Error: Commit contains merge conflict markers. Please resolve and try again."
+    exit 1
+fi
+
+# Run test script using npm
+if ! CI=true npm run test >/dev/null; then
+    echo "Error: Tests failed. Please fix and try again."
+    exit 1
+fi
+
+# If all checks pass, allow the commit to proceed
+exit 0
+```
