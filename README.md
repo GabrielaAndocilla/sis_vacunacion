@@ -3,7 +3,7 @@
 Es un sistema de registro de vacunación de empleados, que maneja dos roles (Admin y Empleado). 
 
 Un usuario admin podrá:
--   Ver todos los Empleados y filtar por : 
+-   Ver todos los Empleados y filtrar por : 
     - Tipo de Vacuna
     - Rango de Fecha
     - Por si están Vacunados o no
@@ -15,37 +15,36 @@ Un empleado puede ver únicamente su perfil
 
 ## Tech Stack
 
-El front esta realizado con reactJs principalmente, fue creado el proyecto usando [Create React App](https://github.com/facebook/create-react-app)
+El front está realizado con ReactJS, principalmente fue creado el proyecto usando [Create React App](https://github.com/facebook/create-react-app)
 
 - ReactJS
 - React Router Dom
 - Tailwind
 
-Para el testing se esta usando
+Para el testing se está usando:
 - Jest
 - React Test Library
 
-Libraría externas
+Librerías externas:
 - [React Date Picker](https://reactdatepicker.com/)
 - [React Select](https://react-select.com/)
-- Para simular el Backend se está usando la libreria [JSON-SERVER](https://www.npmjs.com/package/json-server)
+- Para simular el Backend se está usando la librería [JSON-SERVER](https://www.npmjs.com/package/json-server)
 
-Se esta usando las versiones
+Se está usando las versiones:
 Node - v14.21.2
 ReactJS - v18
 
-## Como ejecutar la Aplicación
+## Cómo ejecutar la Aplicación
 
 1. Clonar repositorio desde el github
 2. Ejecutar `npm install`
 3. Instalar JSON-SERVER `npm install -g json-server`
 4. Iniciar el servidor del backend con el siguiente comando `json-server --watch ./mockDB/db.json --port 3002`
-5. Ejecutar React con`npm start`
-
+5. Ejecutar React con `npm start`
 
 ### Arquitectura del Código
 
-```
+```css
 ├── mockDB
 │   └── db.json
 └── src
@@ -59,35 +58,34 @@ ReactJS - v18
    └── helpers
        ├── helpers.js
        ├── user.helpers.js
-       └── vacinnes.helpers.j
+       └── vaccines.helpers.js
+
 ```
 
 
-La carpeta **src** esta divida en 3 partes :
+La carpeta **src** está dividida en 3 partes:
+
 - **Components:**
-    La carpeta esta organizada siguiendo los principios de atomic design lo que trata es organizar desde los componentes más pequeños y sencillos hasta los más                 complejos.
+La carpeta está organizada siguiendo los principios de atomic design, lo que significa que se organizan desde los componentes más pequeños y sencillos hasta los más complejos.
+Por ejemplo, en la carpeta de **atoms** se pueden encontrar los inputs, labels, app icon, error span, etc. 
+Luego, con la unión de ellos, se puede formar **molecules**, como Form field, Form select field, etc. 
+Con estos, se pueden formar **organisms**, componentes un poco más complejos que los anteriores, tales como un Menú, Tablas, etc. 
+A continuación, tenemos **templates**, donde ya tenemos estructuras que serán utilizadas en las páginas. 
+Por último, los **pages** son nuestras páginas finales que implementan los componentes interiores.
 
-    Por ejemplo en la carpeta de **atoms** se puede encontrar los inputs, labels, app icon, error span , etc ... 
-    Luego con la únion de ellas se podrá formar **molecules**, lo que podemos tener como Form field, Form select field, etc ...
-    Con estos se puede formar **organism** un componente un poco más complejo al anterior, tales como un Menú, Tablas, etc ...
-    A continua tenemos **templates** donde ya tenemos unas estructuras que serán usadas en los pages
-    Por último los **pages** ya son nuestras páginas finales que implementan los componentes interiores
 - **Context:**
-    En esta carpeta se encontrará los context que creemos, los context es información que podemos pasar a lo largo de nuestra app sin necesidad de pasar por los props.
-    Se tiene creado solo el **userauth.jsx** que es el remponsable de guardar el Dato del usuario en sesión. Para la persistencia de este dato en los reload se la esta almacenando en el LocalStorage, es decir, que cuando inicie la App esta chequeará si ya se encuentra un usuario almacenado en LocalStorage, sino simplemente lo iniciará en nulo.
-    ** Nota: es importante no crear context de todos los datos, ya que cuando este cambia, se re-renderiza los componentes que instancia al contexto
+En esta carpeta se encontrarán los context que creamos, los cuales son información que podemos pasar a lo largo de nuestra app sin necesidad de pasar por los props. Se ha creado solo el **userauth.jsx**, que es el responsable de guardar los datos del usuario en sesión. Para la persistencia de estos datos en los reloads, se almacenan en el LocalStorage. Es decir, que cuando inicie la App, esta verificará si ya se encuentra un usuario almacenado en el LocalStorage, y si no, lo iniciará en nulo.
+**Nota**: es importante no crear context de todos los datos, ya que al cambiar este, se volverá a renderizar los componentes que instancian el contexto.
+
 - **Helpers:**
-    Se ha creado esta carpeta para separar toda la lógica de negocio fuera de los componentes, y estos solo llamen las funciones que necesiten. Con esto logramos una arq. más limpia y menos repetición de código. 
-    No se utilizó una librería de manejo de estados para este caso por el tamaño del proyecto, separado esta sección de los componentes es la solución más adaptáda para las necesidades del proyecto.
-    Luego migrar esto a un manejador de estados será más sencillo
+Se ha creado esta carpeta para separar toda la lógica de negocio fuera de los componentes, y estos solo llamen las funciones que necesiten. Con esto logramos una arquitectura más limpia y menos repetición de código. No se utilizó una librería de manejo de estados para este caso debido al tamaño del proyecto. Separar esta sección de los componentes es la solución más adecuada para las necesidades del proyecto. Luego, migrar esto a un manejador de estados será más sencillo.
 
-### Coverage del código
+Coverage del código
+Se han generado pruebas unitarias y de integración. Se ha creado casi un archivo por cada componente o función que se encuentra en el código.
 
-Se generó pruebas unitarias coomo de integración. Se creo casi un archivo por cada Componente o función que se encuentra en el código. 
-- Jest - pruebas unitaria
-- React Test Library - pruebas de integración
-
-Para la ejcución de los test podemos ejecutar `npm run test`
-Para la ejcución de los test con la tabla del coverage ejecutar `npm run test -- --coverage .`
+- Jest: pruebas unitarias.
+- React Test Library: pruebas de integración.
+Para ejecutar los tests, puedes utilizar `npm run test`. 
+Para ejecutar los tests con la tabla de cobertura, utiliza `npm run test -- --coverage .`
 
 <img src="public\images\coverage_table.png"/>
