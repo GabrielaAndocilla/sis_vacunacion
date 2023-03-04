@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# (Front) sistema de vacunación de empleados 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Es un sistema de registro de vacunación de empleados, que maneja dos roles (Admin y Empleado). 
 
-## Available Scripts
+Un usuario admin podrá:
+-   Ver todos los Empleados y filtar por : 
+    - Tipo de Vacuna
+    - Rango de Fecha
+    - Por si están Vacunados o no
+- Crear un nuevo Empleado
+- Editar Empleado
+- Eliminar un Empleado
 
-In the project directory, you can run:
+Un empleado puede ver únicamente su perfil
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+El front esta realizado con reactJs principalmente, fue creado el proyecto usando [Create React App](https://github.com/facebook/create-react-app)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ReactJS
+- React Router Dom
+- Tailwind
 
-### `npm test`
+Para el testing se esta usando
+- Jest
+- React Test Library
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Libraría externas
+- [React Date Picker](https://reactdatepicker.com/)
+- [React Select](https://react-select.com/)
+- Para simular el Backend se está usando la libreria [JSON-SERVER](https://www.npmjs.com/package/json-server)
 
-### `npm run build`
+Se esta usando las versiones
+Node - v14.21.2
+ReactJS - v18
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Como ejecutar la Aplicación
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clonar repositorio desde el github
+2. Ejecutar `npm install`
+3. Instalar JSON-SERVER `npm install -g json-server`
+4. Iniciar el servidor del backend con el siguiente comando `json-server --watch ./mockDB/db.json --port 3002`
+5. Ejecutar React con`npm start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Arquitectura del Código
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+$ tree
+.
+├── mockDB
+│   └── db.json
+└── src
+   ├──── components
+   │       ├── atoms
+   │       ├── molecules
+   │       ├── organism
+   │       ├── templates
+   │       └── pages
+   ├── context
+   └── helpers
+│       ├── helpers.js
+│       ├── user.helpers.js
+│       └── vacinnes.helpers.js
+$ tree
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+La carpeta **src** esta divida en 3 partes:
+    - Components
+        La carpeta esta organizada siguiendo los principios de atomic design lo que trata es organizar desde los componentes más pequeños y sencillos hasta los más complejos.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+        Por ejemplo en la carpeta de **atoms** se puede encontrar los inputs, labels, app icon, error span , etc ... 
+        Luego con la únion de ellas se podrá formar **molecules**, lo que podemos tener como Form field, Form select field, etc ...
+        Con estos se puede formar **organism** un componente un poco más complejo al anterior, tales como un Menú, Tablas, etc ...
+        A continua tenemos **templates** donde ya tenemos unas estructuras que serán usadas en los pages
+        Por último los **pages** ya son nuestras páginas finales que implementan los componentes interiores
+    - Context
+        En esta carpeta se encontrará los context que creemos, los context es información que podemos pasar a lo largo de nuestra app sin necesidad de pasar por los props.
+        Se tiene creado solo el **userauth.jsx** que es el remponsable de guardar el Dato del usuario en sesión. Para la persistencia de este dato en los reload se la esta almacenando en el LocalStorage, es decir, que cuando inicie la App esta chequeará si ya se encuentra un usuario almacenado en LocalStorage, sino simplemente lo iniciará en nulo.
+        ** Nota: es importante no crear context de todos los datos, ya que cuando este cambia, se re-renderiza los componentes que instancia al contexto
+    - Helpers
+        Se ha creado esta carpeta para separar toda la lógica de negocio fuera de los componentes, y estos solo llamen las funciones que necesiten. Con esto logramos una arq. más limpia y menos repetición de código. 
+        No se utilizó una librería de manejo de estados para este caso por el tamaño del proyecto, separado esta sección de los componentes es la solución más adaptáda para las necesidades del proyecto.
+        Luego migrar esto a un manejador de estados será más sencillo
 
-## Learn More
+### Coverage del código
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Se generó pruebas unitarias coomo de integración. Se creo casi un archivo por cada Componente o función que se encuentra en el código. 
+- Jest - pruebas unitaria
+- React Test Library - pruebas de integración
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para la ejcución de los test podemos ejecutar `npm run test`
+Para la ejcución de los test con la tabla del coverage ejecutar `npm run test -- --coverage .`
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![This is the coverage of the project](/images/coverage_table.png)
