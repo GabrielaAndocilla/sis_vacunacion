@@ -1,0 +1,122 @@
+{
+  "roles": [
+    {
+      "id": 1,
+      "type": "admin"
+    },
+    {
+      "id": 2,
+      "type": "employee"
+    }
+  ],
+  "vaccinesType": [
+    {
+      "id": 1,
+      "value": "Sputnik",
+      "label": "Sputnik"
+    },
+    {
+      "id": 2,
+      "value": "AstraZeneca",
+      "label": "AstraZeneca"
+    },
+    {
+      "id": 3,
+      "value": "Pfizer",
+      "label": "Pfizer"
+    },
+    {
+      "id": 4,
+      "value": "Jhonson&Jhonson",
+      "label": "Jhonson&Jhonson"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "num_ID": "1718211944",
+      "names": "Pedro",
+      "familyNames": "Avellano",
+      "email": "pedroAv@gmailcom",
+      "dateOfBirth": "2010-11-28",
+      "address": "",
+      "user": "PedroAvellano",
+      "phone": "",
+      "password": "11111",
+      "role": 1,
+      "vaccine": {
+        "vaccineStatus": false
+      }
+    },
+    {
+      "id": 2,
+      "num_ID": "1711221944",
+      "names": "Juan",
+      "familyNames": "Carlos",
+      "email": "juanCaros@gmailcom",
+      "dateOfBirth": "2010-12-28",
+      "address": "ccc",
+      "user": "JuanCarlos",
+      "phone": "11212121",
+      "password": "22222",
+      "role": 2,
+      "vaccine": {
+        "vaccineStatus": true,
+        "vaccineType": "Sputnik",
+        "vaccineDate": "2023-03-01",
+        "vaccineDoses": "1"
+      }
+    },
+    {
+      "num_ID": "12345678",
+      "names": "test",
+      "familyNames": "test",
+      "email": "test@tes.com",
+      "dateOfBirth": "1987-02-18",
+      "address": "Tomats",
+      "user": "test_test",
+      "phone": "12212121",
+      "password": "11111",
+      "role": 2,
+      "vaccine": {
+        "vaccineStatus": true,
+        "vaccineType": "Jhonson&Jhonson",
+        "vaccineDate": "2023-02-13",
+        "vaccineDoses": "1"
+      },
+      "id": 4
+    },
+    {
+      "num_ID": "8765432199",
+      "names": "Juan",
+      "familyNames": "test",
+      "email": "test@tes.com",
+      "dateOfBirth": null,
+      "address": null,
+      "user": {},
+      "phone": null,
+      "password": "BAFCAAAE",
+      "role": 2,
+      "vaccine": {
+        "vaccineStatus": false
+      },
+      "id": 5
+    },
+    {
+      "num_ID": "124555555",
+      "names": "Carlos",
+      "familyNames": "Cielos",
+      "email": "testrrr@tes.com",
+      "dateOfBirth": null,
+      "address": null,
+      "user": {},
+      "phone": null,
+      "password": "EBFCFFHF",
+      "role": 2,
+      "vaccine": {
+        "vaccineStatus": false
+      },
+      "id": 6
+    }
+  ]
+}
