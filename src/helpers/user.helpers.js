@@ -128,7 +128,6 @@ export const saveEmployee = async (body) => {
         const result = await response
         return result
     }catch(error){
-        return error
+        return null
     }
-
 }

@@ -37,7 +37,7 @@ export default function Login() {
 
   return (
     <>
-     { message && <PopUp close={()=>setMessage('')}>{message}</PopUp>}
+     { message && <PopUp error={true} close={()=>setMessage('')}>{message}</PopUp>}
       <div className='min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
         <div className='max-w-md w-full space-y-8'>
           <div>

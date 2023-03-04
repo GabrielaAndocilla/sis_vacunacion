@@ -15,6 +15,7 @@ import Form from '../templates/Form'
 import { getVaccines } from '../../helpers/vaccines.helpers'
 import { getEmployeeById, updateEmployeeData } from '../../helpers/user.helpers'
 import NavBar from '../organism/NavBar'
+import PopUp from '../atoms/PopUp'
 
 
 const EmployerProfile = () => {
@@ -22,6 +23,7 @@ const EmployerProfile = () => {
   const { id } = useParams()
   const [employee, setEmployee] = useState(null)
   const [vaccines, setVaccines] = useState([])
+  const [message, setMessage] = useState('') 
 
   useEffect(()=>{
     const getUser = async () => {
@@ -48,7 +50,7 @@ const EmployerProfile = () => {
   }
   const submit = async (event) => {
     event.preventDefault()
-    await updateEmployeeData({
+    const updatedEmployee = await updateEmployeeData({
       id:id,
       dateOfBirth: employee.dateOfBirth,
       phone: employee.phone,
@@ -60,12 +62,17 @@ const EmployerProfile = () => {
         vaccineDoses: employee.vaccineDoses
       }
     },id)
+    if(updatedEmployee) return setMessage('Se a guardado los datos')
+    setMessage('Hubo un error intentelo guardar de nuevo')
+
   }
 
   
   return (
-    <div className='p-8'>
+    <>
       <NavBar/>
+      {message && <PopUp close={()=>setMessage('')}>{message}</PopUp>}
+    <div className='p-8'>
       <Form submit={submit}>
         <FormSection>
           <FormSectionTitle
@@ -109,7 +116,7 @@ const EmployerProfile = () => {
         <SubmitBtn>Guardar</SubmitBtn>
       </Form>
       </div>
+    </>
   )
 }
-
 export default EmployerProfile

@@ -151,8 +151,7 @@ describe('Test user helpers',()=>{
     test('saveEmployee Fail', async ()=>{
         fetch.mockImplementation(()=> Promise.reject('Error'))
         const error = await saveEmployee({},123)
-        expect(error).toBe('Error')
-
+        expect(error).toBeNull()
     })
 
 }) 

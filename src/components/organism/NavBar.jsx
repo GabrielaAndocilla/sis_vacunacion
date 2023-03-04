@@ -15,8 +15,14 @@ const NavBar = () => {
         <Link to="/"><AppIcon/></Link>
         <ul className=" px-4 w-full flex items-center justify-between ">
             <li className="text-gray-900 hover:bg-gray-700 hover:text-white p-2 rounded-md">
-                {user?.role === 1 &&  <Link to="/nuevo/empleado">Nuevo Empleados</Link>}
+                  <Link to="/">Inicio</Link>
             </li>
+            {
+            user?.role === 1 && 
+            <li className="text-gray-900 hover:bg-gray-700 hover:text-white p-2 rounded-md">
+                  <Link to="/nuevo/empleado">Nuevo Empleados</Link>
+            </li>
+            }
             <li>
                 <button className="bg-gray-900 text:white py-2 px-4 rounded-md" 
                 onClick={()=>{
@@ -29,5 +35,4 @@ const NavBar = () => {
 
     )
 }
-
 export default NavBar

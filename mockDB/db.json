@@ -55,7 +55,7 @@
       "familyNames": "Carlos",
       "email": "juanCaros@gmailcom",
       "dateOfBirth": "2010-12-28",
-      "address": "ccc",
+      "address": "Tomas",
       "user": "JuanCarlos",
       "phone": "11212121",
       "password": "22222",
@@ -64,7 +64,7 @@
         "vaccineStatus": true,
         "vaccineType": "Sputnik",
         "vaccineDate": "2023-03-01",
-        "vaccineDoses": "1"
+        "vaccineDoses": "3"
       }
     },
     {
@@ -101,6 +101,38 @@
         "vaccineStatus": false
       },
       "id": 6
+    },
+    {
+      "num_ID": "122121212",
+      "names": "Ric",
+      "familyNames": "Tim",
+      "email": "svsdg@djhbs.com",
+      "dateOfBirth": null,
+      "address": null,
+      "user": "RicTim",
+      "phone": null,
+      "password": "GEBDGHGC",
+      "role": 2,
+      "vaccine": {
+        "vaccineStatus": false
+      },
+      "id": 7
+    },
+    {
+      "num_ID": "122333321",
+      "names": "test",
+      "familyNames": "eeee",
+      "email": "gabyxda@hotmail.com",
+      "dateOfBirth": null,
+      "address": null,
+      "user": "testeeee",
+      "phone": null,
+      "password": "HDFEFEBB",
+      "role": 2,
+      "vaccine": {
+        "vaccineStatus": false
+      },
+      "id": 15
     }
   ]
 }

@@ -73,6 +73,6 @@ describe('Employee Profile', ()=>{
         renderComponent()
         await waitFor( () =>expect(screen.getByRole('textbox',{name:'Nombres'})).toHaveValue('Juan') )
         userEvent.click(screen.getByText('Guardar'))
-        expect(updateEmployeeData).toBeCalledTimes(1)
+        await waitFor( () => expect(updateEmployeeData).toBeCalledTimes(1) )
     })
 })
