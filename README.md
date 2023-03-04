@@ -45,8 +45,7 @@ ReactJS - v18
 
 ### Arquitectura del Código
 
-$ tree
-.
+```
 ├── mockDB
 │   └── db.json
 └── src
@@ -58,29 +57,29 @@ $ tree
    │       └── pages
    ├── context
    └── helpers
-│       ├── helpers.js
-│       ├── user.helpers.js
-│       └── vacinnes.helpers.js
-$ tree
+       ├── helpers.js
+       ├── user.helpers.js
+       └── vacinnes.helpers.j
+```
 
 
-La carpeta **src** esta divida en 3 partes:
-    - Components
-        La carpeta esta organizada siguiendo los principios de atomic design lo que trata es organizar desde los componentes más pequeños y sencillos hasta los más complejos.
+La carpeta **src** esta divida en 3 partes :
+- **Components:**
+    La carpeta esta organizada siguiendo los principios de atomic design lo que trata es organizar desde los componentes más pequeños y sencillos hasta los más                 complejos.
 
-        Por ejemplo en la carpeta de **atoms** se puede encontrar los inputs, labels, app icon, error span , etc ... 
-        Luego con la únion de ellas se podrá formar **molecules**, lo que podemos tener como Form field, Form select field, etc ...
-        Con estos se puede formar **organism** un componente un poco más complejo al anterior, tales como un Menú, Tablas, etc ...
-        A continua tenemos **templates** donde ya tenemos unas estructuras que serán usadas en los pages
-        Por último los **pages** ya son nuestras páginas finales que implementan los componentes interiores
-    - Context
-        En esta carpeta se encontrará los context que creemos, los context es información que podemos pasar a lo largo de nuestra app sin necesidad de pasar por los props.
-        Se tiene creado solo el **userauth.jsx** que es el remponsable de guardar el Dato del usuario en sesión. Para la persistencia de este dato en los reload se la esta almacenando en el LocalStorage, es decir, que cuando inicie la App esta chequeará si ya se encuentra un usuario almacenado en LocalStorage, sino simplemente lo iniciará en nulo.
-        ** Nota: es importante no crear context de todos los datos, ya que cuando este cambia, se re-renderiza los componentes que instancia al contexto
-    - Helpers
-        Se ha creado esta carpeta para separar toda la lógica de negocio fuera de los componentes, y estos solo llamen las funciones que necesiten. Con esto logramos una arq. más limpia y menos repetición de código. 
-        No se utilizó una librería de manejo de estados para este caso por el tamaño del proyecto, separado esta sección de los componentes es la solución más adaptáda para las necesidades del proyecto.
-        Luego migrar esto a un manejador de estados será más sencillo
+    Por ejemplo en la carpeta de **atoms** se puede encontrar los inputs, labels, app icon, error span , etc ... 
+    Luego con la únion de ellas se podrá formar **molecules**, lo que podemos tener como Form field, Form select field, etc ...
+    Con estos se puede formar **organism** un componente un poco más complejo al anterior, tales como un Menú, Tablas, etc ...
+    A continua tenemos **templates** donde ya tenemos unas estructuras que serán usadas en los pages
+    Por último los **pages** ya son nuestras páginas finales que implementan los componentes interiores
+- **Context:**
+    En esta carpeta se encontrará los context que creemos, los context es información que podemos pasar a lo largo de nuestra app sin necesidad de pasar por los props.
+    Se tiene creado solo el **userauth.jsx** que es el remponsable de guardar el Dato del usuario en sesión. Para la persistencia de este dato en los reload se la esta almacenando en el LocalStorage, es decir, que cuando inicie la App esta chequeará si ya se encuentra un usuario almacenado en LocalStorage, sino simplemente lo iniciará en nulo.
+    ** Nota: es importante no crear context de todos los datos, ya que cuando este cambia, se re-renderiza los componentes que instancia al contexto
+- **Helpers:**
+    Se ha creado esta carpeta para separar toda la lógica de negocio fuera de los componentes, y estos solo llamen las funciones que necesiten. Con esto logramos una arq. más limpia y menos repetición de código. 
+    No se utilizó una librería de manejo de estados para este caso por el tamaño del proyecto, separado esta sección de los componentes es la solución más adaptáda para las necesidades del proyecto.
+    Luego migrar esto a un manejador de estados será más sencillo
 
 ### Coverage del código
 
@@ -91,4 +90,4 @@ Se generó pruebas unitarias coomo de integración. Se creo casi un archivo por 
 Para la ejcución de los test podemos ejecutar `npm run test`
 Para la ejcución de los test con la tabla del coverage ejecutar `npm run test -- --coverage .`
 
-![This is the coverage of the project](/images/coverage_table.png)
+<img src="public\images\coverage_table.png"/>
