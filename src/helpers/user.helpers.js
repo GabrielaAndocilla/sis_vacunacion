@@ -2,33 +2,49 @@ import { REGEXNUMBER } from "../constance"
 import { randomString } from "./helpers"
 
 export const num_IDIsUnique = async (num_ID) =>{
-    const exitingnum_ID = await fetch(`http://localhost:3000/users?num_ID=${num_ID}`)
-    const response = await exitingnum_ID.json()
-    const result = await response
-    return result
+    try {        
+        const exitingnum_ID = await fetch(`http://localhost:3000/users?num_ID=${num_ID}`)
+        const response = await exitingnum_ID.json()
+        const result = await response
+        return result
+    } catch (error) {
+        return error
+    }
 
 }
 
 export const userNameIsUnique = async (user) =>{
-    const exitingUser = await fetch(`http://localhost:3000/users?user=${user}`)
-    const response = await exitingUser.json()
-    const result = await response
-    return result
+    try {        
+        const exitingUser = await fetch(`http://localhost:3000/users?user=${user}`)
+        const response = await exitingUser.json()
+        const result = await response
+        return result
+    } catch (error) {
+        return error
+    }
 }
 
 export const validateUser = async (userName,password) =>{
-    const fetchUser = await fetch(`http://localhost:3000/users?user=${userName}&password=${password}`)
-    const response = await fetchUser.json()
-    const user = await response
-    return user
+    try {        
+        try{
+            const fetchUser = await fetch(`http://localhost:3000/users?user=${userName}&password=${password}`)
+            const response = await fetchUser.json()
+            const user = await response
+            return user
+        }catch(error){
+            return error
+        }
+    } catch (error) {
+        return error
+    }
 }
 
 export const validateNum_ID = async (num_ID) => {
-    if(num_ID.length > 10) return false
-    if(!REGEXNUMBER.test(num_ID)) return false
-    const exitingnum_ID = await num_IDIsUnique(num_ID)
-    if(exitingnum_ID.length === 0 ) return false
-    return true   
+        if(num_ID.length > 10) return null
+        if(!REGEXNUMBER.test(num_ID)) return null
+        const exitingnum_ID = await num_IDIsUnique(num_ID)
+        if(exitingnum_ID.length === 0 ) return null
+        return num_ID   
 }
 
 export const generateUserName = async (names, familyNames) => {
@@ -39,47 +55,68 @@ export const generateUserName = async (names, familyNames) => {
 }
 
 export const getEmployees = async () =>{
-    const fetchUser = await fetch(`http://localhost:3000/users?role=2`)
-    const response = await fetchUser.json()
-    const result = await response
-    return result
+    try{
+        const fetchUser = await fetch(`http://localhost:3000/users?role=2`)
+        const response = await fetchUser.json()
+        const result = await response
+        return result
+    }catch(error){
+        return error
+    }
 }
 export const getEmployeeById = async (id) =>{
-    const userFetch = await fetch(`http://localhost:3000/users?id=${id}`)
-    const response = await userFetch.json()
-    const result = await response
-    return result[0]
+    try {
+        const userFetch = await fetch(`http://localhost:3000/users?id=${id}`)
+        const response = await userFetch.json()
+        const result = await response
+        return result[0]
+    } catch (error) {
+        return error
+    }
 }
 
 export const getFilterEmployees = async (url) => {
-    const fetchUser = await fetch(`http://localhost:3000/users?role=2&${url}`)
-    const response = await fetchUser.json()
-    const result = await response
-    return result
+    try{
+        const fetchUser = await fetch(`http://localhost:3000/users?role=2&${url}`)
+        const response = await fetchUser.json()
+        const result = await response
+        return result
+    }catch(error){
+        return error
+    }
 }
 
 export const updateEmployeeData = async (body,id) => {
-    const fetchUser = await fetch(`http://localhost:3000/users/${id}`,{
-        method:'PATCH',
-        body:JSON.stringify(body),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    const response = await fetchUser.json()
-    const result = await response
-    return result
+    try{
+        const fetchUser = await fetch(`http://localhost:3000/users/${id}`,{
+                method:'PATCH',
+                body:JSON.stringify(body),
+                headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const response = await fetchUser.json()
+        const result = await response
+        return result
+    }catch(error){
+        return error
+    }
 }
 
 export const saveEmployee = async (body) => {
-    const fetchUser = await fetch(`http://localhost:3000/users`,{
-        method:'POST',
-        body:JSON.stringify(body),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    const response = await fetchUser.json()
-    const result = await response
-    return result
+    try{
+        const fetchUser = await fetch(`http://localhost:3000/users`,{
+            method:'POST',
+            body:JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const response = await fetchUser.json()
+        const result = await response
+        return result
+    }catch(error){
+        return error
+    }
+
 }
