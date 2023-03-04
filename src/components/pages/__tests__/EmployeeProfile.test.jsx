@@ -4,6 +4,9 @@ import EmployerProfile from "../EmployerProfile"
 import {getEmployeeById , updateEmployeeData} from "../../../helpers/user.helpers";
 import { getVaccines } from "../../../helpers/vaccines.helpers";
 import userEvent from "@testing-library/user-event";
+import { Userprovider } from "../../../context/userauth";
+import { MemoryRouter } from "react-router-dom";
+
 
 jest.mock('../../../helpers/user.helpers')
 jest.mock('../../../helpers/vaccines.helpers')
@@ -35,7 +38,11 @@ const vaccine = [{
 
 describe('Employee Profile', ()=>{
 
-    const renderComponent = () => render(<EmployerProfile/>)
+    const renderComponent = () => render(
+        <Userprovider>
+            <MemoryRouter><EmployerProfile/></MemoryRouter>          
+        </Userprovider>
+    )
     it('should render Component with Employee with vaccine',async () => {
         getEmployeeById.mockResolvedValue(employee)
         getVaccines.mockResolvedValue(vaccine)
@@ -65,7 +72,7 @@ describe('Employee Profile', ()=>{
         updateEmployeeData.mockResolvedValue({})
         renderComponent()
         await waitFor( () =>expect(screen.getByRole('textbox',{name:'Nombres'})).toHaveValue('Juan') )
-        userEvent.click(screen.getByRole('button',{type:'submit'}))
+        userEvent.click(screen.getByText('Guardar'))
         expect(updateEmployeeData).toBeCalledTimes(1)
     })
 })

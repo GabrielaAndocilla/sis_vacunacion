@@ -19,12 +19,9 @@ export default function Login() {
   const navigate = useNavigate()
 
   const redirectUserPage = (users) => {
-    console.log('users',users.length === 0,users)
     if (users.length === 0) return setMessage('Lo sentimos ese usuario no Existe') 
-  
     const user = users[0]
     login(user)
-
     if(user.role === 1) return navigate('/admin');
     return navigate(`/myProfile/${user.id}`);
   }

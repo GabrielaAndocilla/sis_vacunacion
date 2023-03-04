@@ -1,3 +1,4 @@
+import React from "react"
 import TableHeaderCell from "../atoms/TableHeaderCell"
 
 const TableHeader = ({titles}) => {
@@ -13,4 +14,4 @@ const TableHeader = ({titles}) => {
     )
 }
 
-export default TableHeader
+export default React.memo(TableHeader)

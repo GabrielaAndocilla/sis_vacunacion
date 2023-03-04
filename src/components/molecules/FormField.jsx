@@ -1,5 +1,5 @@
 import React from 'react'
-import { ErrorrSpan } from '../atoms/ErrorrSpan'
+import ErrorrSpan from '../atoms/ErrorrSpan'
 import Input from '../atoms/Input'
 import Label from '../atoms/Label'
 
@@ -18,4 +18,4 @@ function FormField({
   )
 }
 
-export default FormField
+export default React.memo(FormField)

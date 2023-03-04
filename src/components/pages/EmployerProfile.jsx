@@ -14,6 +14,7 @@ import Form from '../templates/Form'
 
 import { getVaccines } from '../../helpers/vaccines.helpers'
 import { getEmployeeById, updateEmployeeData } from '../../helpers/user.helpers'
+import NavBar from '../organism/NavBar'
 
 
 const EmployerProfile = () => {
@@ -64,6 +65,7 @@ const EmployerProfile = () => {
   
   return (
     <div className='p-8'>
+      <NavBar/>
       <Form submit={submit}>
         <FormSection>
           <FormSectionTitle

@@ -8,4 +8,4 @@ function Label({htmlFor,label}) {
     )
 }
 
-export default Label
+export default React.memo(Label)

@@ -9,21 +9,25 @@ import NewEmployee from './components/pages/NewEmployee';
 
 const App = () => {
     const { user } = ReadUser();
-
     const validateRoute = (element, roleAssign) => {
         if(!user) return <Navigate to="/" replace={true} /> 
         if(user.role !== roleAssign) return <Navigate to="/" replace={true} /> 
         return element
+    }
 
+    const autoLogging = (element) => {
+        if(!user) return  element
+        if(user.role === 1) return <Navigate to="/admin" replace={true} />
+        return <Navigate to={`/myProfile/${user.id}`} replace={true} />
     }
     const router = createBrowserRouter([
     {
         path: "/",
-        element: <Login />,
+        element:autoLogging(<Login />),
     },
     {
         path:'/admin',
-        element: validateRoute(<AdminLanding/>,1),
+        element:validateRoute(<AdminLanding/>,1),
     },
     {      
         path:'/nuevo/empleado',
