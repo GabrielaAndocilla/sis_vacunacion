@@ -85,6 +85,7 @@ Se han generado pruebas unitarias y de integración. Se ha creado casi un archiv
 
 - Jest: pruebas unitarias.
 - React Test Library: pruebas de integración.
+
 Para ejecutar los tests, puedes utilizar `npm run test`. 
 Para ejecutar los tests con la tabla de cobertura, utiliza `npm run test -- --coverage .`
 
