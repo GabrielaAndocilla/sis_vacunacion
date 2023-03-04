@@ -6,9 +6,7 @@ export function Userprovider(props){
 
     const [user, setUser] = useState(()=>{
         try {
-            console.log('useState',window.localStorage.getItem('user'))
             const item = window.localStorage.getItem('user')
-            console.log(JSON.parse(item))
             return item ? JSON.parse(item) : null
         } catch (error) {
             return null

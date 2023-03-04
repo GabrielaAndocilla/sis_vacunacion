@@ -87,22 +87,6 @@
       "id": 4
     },
     {
-      "num_ID": "8765432199",
-      "names": "Juan",
-      "familyNames": "test",
-      "email": "test@tes.com",
-      "dateOfBirth": null,
-      "address": null,
-      "user": "JuanTest",
-      "phone": null,
-      "password": "BAFCAAAE",
-      "role": 2,
-      "vaccine": {
-        "vaccineStatus": false
-      },
-      "id": 5
-    },
-    {
       "num_ID": "124555555",
       "names": "Carlos",
       "familyNames": "Cielos",

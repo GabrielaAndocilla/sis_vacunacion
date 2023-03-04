@@ -85,6 +85,18 @@ export const getFilterEmployees = async (url) => {
         return error
     }
 }
+export const deleteEmployee = async (id) => {
+    try{
+        const fetchUser = await fetch(`http://localhost:3000/users/${id}`,{
+                method:'DELETE'
+        })
+        const response = await fetchUser.json()
+        const result = await response
+        return result
+    }catch(error){
+        return error
+    }
+}
 
 export const updateEmployeeData = async (body,id) => {
     try{

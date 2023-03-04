@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import Table from '../organism/Table'
 import NavBar from '../organism/NavBar'
 
-import { getEmployees, getFilterEmployees } from '../../helpers/user.helpers'
+import { getEmployees, getFilterEmployees, deleteEmployee } from '../../helpers/user.helpers'
 import { formatDate } from '../../helpers/helpers'
 import FormFilters from '../templates/FormFilters'
 
@@ -15,19 +15,21 @@ const AdminLanding = () => {
 
   const [employees,setEmployees] = useState([])
 
+  const getData = async () => {
+    const emplo = await getEmployees()
+    setEmployees(emplo)
+  }
+
   useEffect(()=>{
-    const getData = async () => {
-      const employees = await getEmployees()
-      setEmployees(employees)
-    }
     getData()
   },[])
 
-  const erraseEmploye = (id) => {
-    console.log(id)
+  const eraseEmployee = async (id) => {
+    await deleteEmployee(id)
+    getData()
   }
 
-  const formatData = (employees) =>  employees.map(({id,num_ID,names,familyNames,email,vaccine}) => {
+  const formatData = () =>  employees.map(({id,num_ID,names,familyNames,email,vaccine}) => {
     return {
       id,
       num_ID,
@@ -39,8 +41,8 @@ const AdminLanding = () => {
       vaccineType: vaccine?.vaccineType,
       vaccineDosisNumber: vaccine?.vaccineDoses,
       acctions: <>
+        <button onClick={()=>eraseEmployee(id)}><FontAwesomeIcon icon={faTrashAlt}/></button>
         <Link to={`/empleado/${id}`}><FontAwesomeIcon icon={faEdit} /></Link>
-        <FontAwesomeIcon icon={faTrashAlt} onClick={() => erraseEmploye(id)} />
       </> 
     }
   })
@@ -56,7 +58,7 @@ const AdminLanding = () => {
       <FormFilters filterData={filterData}/>
       <Table
       titles={['Cedula','Nombre','Apellidos','Email','Vacunado','Fecha de Vacunación','Tipo de Vacuna','Numero de Dosis', '']}
-      values={formatData(employees)}/>
+      values={formatData()}/>
     </>
   )
 }

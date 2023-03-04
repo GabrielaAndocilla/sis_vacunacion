@@ -3,15 +3,20 @@ import { render,screen, fireEvent, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event";
 import { formatDate } from "../../../helpers/helpers";
 import FormFilters from "../FormFilters";
+import { getVaccines } from "../../../helpers/vaccines.helpers";
 
 
-jest.mock('../../../helpers/user.helpers')
+jest.mock('../../../helpers/vaccines.helpers')
 
 describe('Admin Page',()=>{
-    const renderComponent = () => render(<FormFilters/>)
 
     it('change Date',async ()=>{
-        renderComponent()
+        getVaccines.mockResolvedValue([    {
+            "id": 2,
+            "value": "AstraZeneca",
+            "label": "AstraZeneca"
+        }])
+        render(<FormFilters/>)
         const filterType = screen.getAllByRole('combobox')[0]
         fireEvent.keyDown(filterType,{key:'ArrowDown',code:'ArrowDown'})
         fireEvent.keyDown(filterType,{key:'ArrowDown',code:'ArrowDown'})
