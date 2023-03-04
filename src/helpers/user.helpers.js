@@ -3,7 +3,7 @@ import { randomString } from "./helpers"
 
 export const num_IDIsUnique = async (num_ID) =>{
     try {        
-        const exitingnum_ID = await fetch(`http://localhost:3000/users?num_ID=${num_ID}`)
+        const exitingnum_ID = await fetch(`http://localhost:3002/users?num_ID=${num_ID}`)
         const response = await exitingnum_ID.json()
         const result = await response
         return result
@@ -15,7 +15,7 @@ export const num_IDIsUnique = async (num_ID) =>{
 
 export const userNameIsUnique = async (user) =>{
     try {        
-        const exitingUser = await fetch(`http://localhost:3000/users?user=${user}`)
+        const exitingUser = await fetch(`http://localhost:3002/users?user=${user}`)
         const response = await exitingUser.json()
         const result = await response
         return result
@@ -27,7 +27,7 @@ export const userNameIsUnique = async (user) =>{
 export const validateUser = async (userName,password) =>{
     try {        
         try{
-            const fetchUser = await fetch(`http://localhost:3000/users?user=${userName}&password=${password}`)
+            const fetchUser = await fetch(`http://localhost:3002/users?user=${userName}&password=${password}`)
             const response = await fetchUser.json()
             const user = await response
             return user
@@ -56,7 +56,7 @@ export const generateUserName = async (names, familyNames) => {
 
 export const getEmployees = async () =>{
     try{
-        const fetchUser = await fetch(`http://localhost:3000/users?role=2`)
+        const fetchUser = await fetch(`http://localhost:3002/users?role=2`)
         const response = await fetchUser.json()
         const result = await response
         return result
@@ -66,7 +66,7 @@ export const getEmployees = async () =>{
 }
 export const getEmployeeById = async (id) =>{
     try {
-        const userFetch = await fetch(`http://localhost:3000/users?id=${id}`)
+        const userFetch = await fetch(`http://localhost:3002/users?id=${id}`)
         const response = await userFetch.json()
         const result = await response
         return result[0]
@@ -77,7 +77,7 @@ export const getEmployeeById = async (id) =>{
 
 export const getFilterEmployees = async (url) => {
     try{
-        const fetchUser = await fetch(`http://localhost:3000/users?role=2&${url}`)
+        const fetchUser = await fetch(`http://localhost:3002/users?role=2&${url}`)
         const response = await fetchUser.json()
         const result = await response
         return result
@@ -87,7 +87,7 @@ export const getFilterEmployees = async (url) => {
 }
 export const deleteEmployee = async (id) => {
     try{
-        const fetchUser = await fetch(`http://localhost:3000/users/${id}`,{
+        const fetchUser = await fetch(`http://localhost:3002/users/${id}`,{
                 method:'DELETE'
         })
         const response = await fetchUser.json()
@@ -100,7 +100,7 @@ export const deleteEmployee = async (id) => {
 
 export const updateEmployeeData = async (body,id) => {
     try{
-        const fetchUser = await fetch(`http://localhost:3000/users/${id}`,{
+        const fetchUser = await fetch(`http://localhost:3002/users/${id}`,{
                 method:'PATCH',
                 body:JSON.stringify(body),
                 headers: {
@@ -117,7 +117,7 @@ export const updateEmployeeData = async (body,id) => {
 
 export const saveEmployee = async (body) => {
     try{
-        const fetchUser = await fetch(`http://localhost:3000/users`,{
+        const fetchUser = await fetch(`http://localhost:3002/users`,{
             method:'POST',
             body:JSON.stringify(body),
             headers: {

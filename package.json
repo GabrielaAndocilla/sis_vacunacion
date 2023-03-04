@@ -19,8 +19,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "startReact": "export PORT=3002 react-scripts start",
-    "startJSON": "json-server --watch ./mockDB/db.json ",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
