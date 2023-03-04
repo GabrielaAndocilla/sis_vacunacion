@@ -119,3 +119,4 @@ fi
 # If all checks pass, allow the commit to proceed
 exit 0
 ```
+<img src="public\images\preCommit.png"/>
