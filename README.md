@@ -90,7 +90,7 @@ Para ejecutar los tests, puedes utilizar `npm run test`.
 Para ejecutar los tests con la tabla de cobertura, utiliza `npm run test -- --coverage .`
 
 <img src="public\images\coverage_table.png"/>
-#### Pre-commit hooks
+### Pre-commit hooks
 
 Los pre-commit hooks son scripts que se ejecutan automáticamente antes de cada confirmación de Git. Estos scripts se utilizan para realizar diversas comprobaciones y pruebas en el código, para garantizar que se cumplan ciertas normas de calidad y para prevenir la confirmación de código con errores.
 
